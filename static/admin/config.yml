@@ -1,25 +1,17 @@
 backend:
   name: github
   repo: lukeg90/matchapp-static
+  branch: master
 publish_mode: editorial_workflow
 media_folder: static/assets
 public_folder: /assets
 collections:
-  # - name: blog
-  #   label: Blog
-  #   folder: blog
-  #   create: true
-  #   fields:
-  #     - { name: path, label: Path }
-  #     - { name: date, label: Date, widget: datetime }
-  #     - { name: title, label: Title }
-  #     - { name: body, label: Body, widget: markdown }
   - name: pages
     label: Pages
     files:
       - name: faq
         label: "Frequently Asked Questions"
-        file: /content/frequently-asked-questions.md
+        file: src/content/frequently-asked-questions.md
         fields:
           - { label: Title, name: title, widget: string }
           - name: qanda
@@ -30,13 +22,13 @@ collections:
               - { label: Answer, name: answer, widget: string }
       - name: privacy-policy
         label: "Privacy Policy"
-        file: /content/privacy-policy.md
+        file: src/content/privacy-policy.md
         fields:
           - { label: Title, name: title, widget: string }
           - { label: Body, name: body, widget: markdown }
       - name: terms-and-conditions
         label: "Terms and Conditions"
-        file: /content/terms-and-conditions.md
+        file: src/content/terms-and-conditions.md
         fields:
           - { label: Title, name: title, widget: string }
           - { label: Body, name: body, widget: markdown }
