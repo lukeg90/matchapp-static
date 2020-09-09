@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { Link, graphql } from "gatsby"
 import { withTrans } from "../i18n/withTrans"
 import { useTranslation } from "react-i18next"
@@ -6,7 +6,6 @@ import { useTranslation } from "react-i18next"
 import SEO from "../components/seo"
 import "../styles/App.css"
 import Register from "../components/register"
-import Coverflow from "react-coverflow"
 import carouselImg1 from "../images/girl/jernej-graj-8y6L01KFagQ-unsplash.jpg"
 import carouselImg2 from "../images/boy/bianca-berg-zhsjOtsBFts-unsplash.jpg"
 import carouselImg3 from "../images/boy/briona-baker-t-3jCN4rxhE-unsplash.jpg"
@@ -17,6 +16,10 @@ import carouselImg7 from "../images/girl/caique-silva-Ij24Uq1sMwM-unsplash.jpg"
 
 const Index = ({ data }) => {
   const [locale, setLocale] = useState("de")
+
+  useEffect(() => {
+    import Coverflow from "react-coverflow"
+  }, [])
 
   const { t, i18n } = useTranslation()
 
