@@ -3,14 +3,12 @@ import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 
-const TermsAndConditions = props => {
-  const title =
-    props.data.allFile.edges[0].node.childMarkdownRemark.frontmatter.title
-  const body =
-    props.data.allFile.edges[0].node.childMarkdownRemark.internal.content
+const TermsAndConditions = ({ data }) => {
+  const title = data.allMarkdownRemark.edges[0].node.frontmatter.title
+  const body = data.allMarkdownRemark.edges[0].node.html
   return (
     <Layout title={title}>
-      <p>{body}</p>
+      <div dangerouslySetInnerHTML={{ __html: body }} />
     </Layout>
   )
 }
@@ -19,21 +17,14 @@ export default TermsAndConditions
 
 export const query = graphql`
   query {
-    allFile(
-      filter: {
-        sourceInstanceName: { eq: "content" }
-        name: { eq: "terms-and-conditions" }
-      }
+    allMarkdownRemark(
+      filter: { fileAbsolutePath: { regex: "/terms-and-conditions.md/" } }
     ) {
       edges {
         node {
-          childMarkdownRemark {
-            frontmatter {
-              title
-            }
-            internal {
-              content
-            }
+          html
+          frontmatter {
+            title
           }
         }
       }
