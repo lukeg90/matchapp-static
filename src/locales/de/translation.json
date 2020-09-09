@@ -1,0 +1,23 @@
+{
+  "register": {
+    "hook": {
+      "title": "Sichere dir die Extended Free Trial",
+      "exclusive": "Exklusiver Vorteil für Vorab-Registrierungen:",
+      "offer": "Registrierte dich vorab und nutze die MatchApp 4 statt 1 Monat kostenlos!"
+    },
+    "form": {
+      "email-placeholder": "E-mail Addresse",
+      "bundesland-select": "-- Bundesland wählen --",
+      "accept-terms": "Ich akzeptiere die Datenschutzbedingungen für die Teilnahme der MatchApp-Pre-Registration",
+      "submit": "Extended Trial sichern!"
+    },
+    "link-sent": "Um Ihre Registrierung zu überprüfen, klicken Sie bitte auf den Link, den Sie per E-Mail erhalten haben",
+    "success": "Registrierung erfolgreich!",
+    "error": {
+      "already-registered": "E-mail schon registriert",
+      "not-human": "Bitte bestätigen Sie, dass Sie kein Roboter sind",
+      "terms-not-accepted": "Bitte akzeptieren Sie die Datenschutzbedingungen",
+      "general": "Hoppla! Es ist ein Fehler aufgetreten"
+    }
+  }
+}

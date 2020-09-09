@@ -1,0 +1,23 @@
+{
+  "register": {
+    "hook": {
+      "title": "Get your Extended Free Trial",
+      "exclusive": "Exclusive offer for pre-registration:",
+      "offer": "Register in advance and use MatchApp free of charge for 4 months instead of 1!"
+    },
+    "form": {
+      "email-placeholder": "E-mail Address",
+      "bundesland-select": "-- Federal Land --",
+      "accept-terms": "I accept the data protection conditions for participating in the MatchApp pre-registration",
+      "submit": "Get Extended Trial!"
+    },
+    "link-sent": "To verify your registration, please click on the link that you have received by email",
+    "success": "Registration successful!",
+    "error": {
+      "already-registered": "E-mail already registered",
+      "not-human": "Please confirm that you are not a robot",
+      "terms-not-accepted": "Please accept the data protection conditions",
+      "general": "Oops! There was an error"
+    }
+  }
+}
