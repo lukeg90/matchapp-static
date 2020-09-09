@@ -19,6 +19,8 @@ const IndexPage = () => {
       <SEO title="Home" />
       <p>Testing static website with Gatsby and Netlify CMS</p>
       <Link to="/terms-and-conditions">Terms and conditions</Link>
+      <Link to="/faq">Frequently Asked Questions</Link>
+      <Link to="/privacy-policy">Privacy Policy</Link>
     </Layout>
   )
 }
