@@ -8,11 +8,7 @@ const PrivacyPolicy = props => {
     props.data.allFile.edges[0].node.childMarkdownRemark.frontmatter.title
   const body =
     props.data.allFile.edges[0].node.childMarkdownRemark.internal.content
-  return (
-    <Layout title={title}>
-      <p>{body}</p>
-    </Layout>
-  )
+  return <Layout title={title}>{body}</Layout>
 }
 
 export default PrivacyPolicy
