@@ -1,7 +1,6 @@
 backend:
   name: github
   repo: lukeg90/matchapp-static
-publish_mode: editorial_workflow
 media_folder: static/assets
 public_folder: assets
 collections:
