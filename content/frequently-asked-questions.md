@@ -12,9 +12,7 @@ qanda:
       purus. Praesent dapibus, urna vel malesuada elementum, arcu lorem
       imperdiet dui, quis finibus turpis nisi sed enim. Integer vulputate felis
       orci, finibus accumsan ligula pulvinar nec. In at consectetur leo.
-  - question: "Second test question is a much longer question to test the borders of
-      the question box. asdfasdfkljsdfs dasfas dfsd f sdaf asf s fda ds f sa f
-      sf "
+  - question: Second question?
     answer: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam lectus
       urna, lobortis a fermentum in, viverra sit amet arcu. Nam molestie lacinia
       nisi, vel vehicula augue aliquam pharetra. Vestibulum quam urna,
@@ -25,4 +23,18 @@ qanda:
       purus. Praesent dapibus, urna vel malesuada elementum, arcu lorem
       imperdiet dui, quis finibus turpis nisi sed enim. Integer vulputate felis
       orci, finibus accumsan ligula pulvinar nec. In at consectetur leo.
+  - question: What is the Answer to the Ultimate Question of Life, the Universe, and
+      Everything?
+    answer: "42"
+  - question: "Frage "
+    answer: Antwort
+  - question: What is the Answer to the Ultimate Question of Life, the Universe, and
+      Everything?
+    answer: 42 – The answer to this is very simple. It was a joke. It had to be a
+      number, an ordinary, smallish number, and I chose that one. Binary
+      representations, base thirteen, Tibetan monks are all complete nonsense. I
+      sat at my desk, stared into the garden and thought '42 will do' I typed it
+      out. End of story.
+  - question: 42+1
+    answer: "43"
 ---
