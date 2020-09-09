@@ -12,7 +12,9 @@ qanda:
       purus. Praesent dapibus, urna vel malesuada elementum, arcu lorem
       imperdiet dui, quis finibus turpis nisi sed enim. Integer vulputate felis
       orci, finibus accumsan ligula pulvinar nec. In at consectetur leo.
-  - question: Second test question?
+  - question: "Second test question is a much longer question to test the borders of
+      the question box. asdfasdfkljsdfs dasfas dfsd f sdaf asf s fda ds f sa f
+      sf "
     answer: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam lectus
       urna, lobortis a fermentum in, viverra sit amet arcu. Nam molestie lacinia
       nisi, vel vehicula augue aliquam pharetra. Vestibulum quam urna,
