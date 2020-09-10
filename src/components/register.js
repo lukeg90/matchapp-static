@@ -2,126 +2,41 @@ import React, { useState, useEffect } from "react"
 import { useStatefulFields } from "../hooks/useStatefulFields"
 import axios from "axios"
 import ReCAPTCHA from "react-google-recaptcha"
+import firebase from "gatsby-plugin-firebase"
 
-export default function Register({ language, t, i18n }) {
+export default function Register({ t }) {
   const [inputValues, handleChange] = useStatefulFields()
   const [termsAccepted, setTermsAccepted] = useState(false)
+  // const [humanVerified, setHumanVerified] = useState(false)
   const [error, setError] = useState(false)
   const [errorMessage, setErrorMessage] = useState("")
   const [step, setStep] = useState("first")
-  const [humanVerified, setHumanVerified] = useState(false)
+  const [db, setDb] = useState(null)
 
-  // useEffect(() => {
-  //   // when component mounts, check if there is a code in location.pathname
-  //   // fetch user email using cookie
-  //   if (window.location.pathname !== "/") {
-  //     axios
-  //       .get("/user")
-  //       .then(({ data }) => {
-  //         if (data.success) {
-  //           console.log("Fetched user: ", data);
-  //           return axios.get(`/most-recent-code/${data.email}`);
-  //         }
-  //       })
-  //       .then(({ data }) => {
-  //         console.log("Data: ", data);
-  //         if (data.success) {
-  //           console.log("Most recent code: ", data.code);
-  //           if (`/${data.code}` === window.location.pathname) {
-  //             completeRegistration();
-  //           }
-  //         }
-  //       })
-  //       .catch((err) => {
-  //         console.log("Error fetching user or getting recent code: ", err);
-  //       });
-  //   }
-  // }, []);
+  useEffect(() => {
+    let database = firebase.firestore()
+    setDb(database)
+  }, [])
 
-  // const submitForm = (e) => {
-  //   e.preventDefault();
-  //   if (termsAccepted && humanVerified) {
-  //     axios
-  //       .post("/register", {
-  //         email: inputValues.email,
-  //         bundesland: inputValues.bundesland,
-  //       })
-  //       // if email is new, or if email is already in database but not verified, go to second step
-  //       .then(({ data }) => {
-  //         console.log("response data: ", data);
-  //         if (data.success) {
-  //           setError(false);
-  //           setErrorMessage("");
-  //           sendLink();
-  //           setStep("second");
-  //         } else {
-  //           console.log("error: ", data.error);
-  //           setError(true);
-  //           setErrorMessage(data.error);
-  //         }
-  //       })
-  //       .catch((err) => {
-  //         console.log("Unknown registration error: ", err);
-  //         setError(true);
-  //         setErrorMessage("general");
-  //       });
-  //   }
-  //   if (!humanVerified) {
-  //     setError(true);
-  //     setErrorMessage("not-human");
-  //   }
-  //   if (!termsAccepted) {
-  //     setError(true);
-  //     setErrorMessage("terms-not-accepted");
-  //   }
-  // };
-
-  // const sendLink = () => {
-  //   axios
-  //     .post("/send-link", { email: inputValues.email, language })
-  //     .then(({ data }) => {
-  //       if (data.success) {
-  //         console.log("Link sent successfully");
-  //       }
-  //     })
-  //     .catch((err) => {
-  //       console.log("Error sending link: ", err);
-  //     });
-  // };
-
-  // const verifyHuman = (value) => {
-  //   console.log("Captcha value: ", value);
-  //   axios
-  //     .post("/verify-human", {
-  //       captchaValue: value,
-  //     })
-  //     .then(({ data }) => {
-  //       console.log("Verify human response data: ", data);
-  //       if (data.success) {
-  //         setHumanVerified(true);
-  //         console.log("Human verified");
-  //       } else {
-  //         setError(true);
-  //         setErrorMessage(data.error);
-  //       }
-  //     })
-  //     .catch((err) => {
-  //       console.log("Error verifying human: ", err);
-  //     });
-  // };
-
-  // const completeRegistration = () => {
-  //   axios
-  //     .post("/complete-registration")
-  //     .then(({ data }) => {
-  //       if (data.success) {
-  //         setStep("third");
-  //       }
-  //     })
-  //     .catch((err) => {
-  //       console.log("Error updating user after completed registration: ", err);
-  //     });
-  // };
+  const submitForm = e => {
+    e.preventDefault()
+    if (termsAccepted) {
+      db.collection("users")
+        .add({
+          email: inputValues.email,
+          bundesland: inputValues.bundesland,
+        })
+        .then(({ id }) => {
+          console.log("Document written with ID: ", id)
+        })
+        .catch(err => {
+          console.log("Error adding document", err)
+        })
+    } else {
+      setError(true)
+      setErrorMessage("terms-not-accepted")
+    }
+  }
 
   const getCurrentDisplay = () => {
     if (step === "first") {
@@ -134,10 +49,9 @@ export default function Register({ language, t, i18n }) {
           </h3>
           <form
             className="flex-container form-container"
-            // onSubmit={e => submitForm(e)}
+            onSubmit={e => submitForm(e)}
           >
             <div className="form-fields">
-              <label htmlFor=""></label>
               <input
                 required
                 name="email"

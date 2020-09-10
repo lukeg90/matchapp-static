@@ -620,6 +620,216 @@ pre tt:after {
   display: none;
 }
 
+.App {
+  font-family: "Josefin Sans";
+  width: 100vw;
+  height: 100vh;
+}
+
+.language-select {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}
+
+.active {
+  color: rgba(0, 204, 204);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.inactive {
+  color: black;
+  text-decoration: none;
+}
+
+.title {
+  color: rgba(0, 204, 204);
+  font-size: 50px;
+  margin-bottom: 10px;
+  font-family: "Josefin Sans Bold";
+  letter-spacing: 0.1em;
+}
+
+.subtitle {
+  color: rgba(0, 204, 204);
+  letter-spacing: 0.1em;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: space-evenly;
+}
+
+.title-container {
+  height: 150px;
+  justify-content: center;
+}
+
+.main-container {
+  height: 650px;
+}
+
+.small-container {
+  height: 300px;
+}
+
+.form-container {
+  height: 350px;
+}
+
+p {
+  line-height: 20px;
+}
+
+input[type="email"] {
+  border: solid rgb(0, 204, 204);
+  border-radius: 10px;
+  padding: 5px 10px 5px 10px;
+  font-size: larger;
+  width: 300px;
+  height: 40px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+input[type="email"]:focus {
+  outline: none;
+}
+
+input[type="text"] {
+  border: solid rgb(0, 204, 204);
+  border-radius: 10px;
+  padding: 5px;
+  font-size: larger;
+  width: 300px;
+  height: 40px;
+}
+
+input[type="text"]:focus {
+  outline: none;
+}
+
+input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+input[type="checkbox"]:hover {
+  cursor: pointer;
+}
+
+select {
+  border: solid rgb(0, 204, 204);
+  border-radius: 10px;
+  padding: 5px;
+  font-size: larger;
+  width: 300px;
+  height: 40px;
+}
+
+select:required:invalid {
+  color: gray;
+}
+
+option[value=""] {
+  color: gray;
+}
+
+option {
+  color: black;
+}
+
+select:focus {
+  outline: none;
+}
+
+.submit-button {
+  background: rgb(0, 204, 204);
+  color: white;
+  font-size: larger;
+  font-weight: bolder;
+  width: 300px;
+  height: 40px;
+  border-radius: 10px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  box-shadow: 3px 3px rgba(0, 0, 0, 0.1);
+}
+
+.locale-button {
+  background: none;
+  border: none;
+  outline: none;
+}
+
+.locale-button:hover {
+  cursor: pointer;
+}
+
+.submit-button:active {
+  transform: translateY(2px);
+  box-shadow: none;
+}
+
+.error {
+  color: red;
+}
+
+@media screen and (max-width: 500px) {
+  .App {
+    font-size: smaller;
+  }
+
+  .title {
+    font-size: 40px;
+  }
+
+  .subtitle {
+    font-size: 20px;
+  }
+
+  h3 {
+    font-size: 14px;
+  }
+
+  .form-fields {
+    width: 80%;
+  }
+
+  input[type="email"] {
+    width: 100%;
+    height: 35px;
+  }
+
+  select {
+    width: 100%;
+    height: 35px;
+  }
+
+  button {
+    width: 80%;
+    height: 35px;
+  }
+
+  .main-container {
+    padding: 0 20px 0 20px;
+    height: 450px;
+  }
+
+  .form-container {
+    height: 280px;
+  }
+
+  .small-container {
+    height: 200px;
+    padding: 0 20px 0 20px;
+  }
+}
+
 @media only screen and (max-width: 480px) {
   html {
     font-size: 100%;

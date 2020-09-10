@@ -9,14 +9,12 @@ import QAndA from "../components/qanda"
 const Faq = props => {
   const data = props.data.allFile.edges[0].node.childMarkdownRemark.frontmatter
   return (
-    <Layout title={data.title}>
-      <div className="faq-items">
-        {data.qanda.length > 0 &&
-          data.qanda.map(item => (
-            <QAndA question={item.question} answer={item.answer} />
-          ))}
-      </div>
-    </Layout>
+    <div className="faq-items">
+      {data.qanda.length > 0 &&
+        data.qanda.map(item => (
+          <QAndA question={item.question} answer={item.answer} />
+        ))}
+    </div>
   )
 }
 

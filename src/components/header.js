@@ -1,25 +1,40 @@
-import { Link } from "gatsby"
+import React, { useState } from "react"
 import PropTypes from "prop-types"
-import React from "react"
+import { useTranslation } from "react-i18next"
 
-const Header = ({ title }) => (
-  <header
-    style={{
-      background: `rgb(0, 204, 204)`,
-      marginBottom: `1.45rem`,
-    }}
-  >
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
-      }}
-    >
-      <h1 style={{ margin: 0, color: "white" }}>{title}</h1>
-    </div>
-  </header>
-)
+const Header = ({ data, title }) => {
+  const [locale, setLocale] = useState("de")
+  const { t, i18n } = useTranslation()
+
+  const changeLocale = language => {
+    i18n.changeLanguage(language)
+    setLocale(language)
+  }
+
+  return (
+    <header>
+      <span className="language-select">
+        <button
+          className={`locale-button ${locale === "de" ? "active" : "inactive"}`}
+          onClick={() => changeLocale("de")}
+        >
+          DE
+        </button>{" "}
+        |{" "}
+        <button
+          className={`locale-button ${locale === "en" ? "active" : "inactive"}`}
+          onClick={() => changeLocale("en")}
+        >
+          EN
+        </button>
+      </span>
+      <div className="flex-container title-container">
+        <h1 className="title">{title}</h1>
+        <h2 className="subtitle">Swipe them into your bed!</h2>
+      </div>
+    </header>
+  )
+}
 
 Header.propTypes = {
   title: PropTypes.string,

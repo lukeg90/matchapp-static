@@ -7,9 +7,9 @@ const TermsAndConditions = ({ data }) => {
   const title = data.allMarkdownRemark.edges[0].node.frontmatter.title
   const body = data.allMarkdownRemark.edges[0].node.html
   return (
-    <Layout title={title}>
+    <>
       <div dangerouslySetInnerHTML={{ __html: body }} />
-    </Layout>
+    </>
   )
 }
 
