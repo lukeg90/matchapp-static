@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react"
 import { useStatefulFields } from "../hooks/useStatefulFields"
-import axios from "axios"
 import ReCAPTCHA from "react-google-recaptcha"
 import firebase from "gatsby-plugin-firebase"
 
@@ -11,30 +10,53 @@ export default function Register({ t }) {
   const [error, setError] = useState(false)
   const [errorMessage, setErrorMessage] = useState("")
   const [step, setStep] = useState("first")
-  const [db, setDb] = useState(null)
+  const [db, setDb] = useState()
+  const [auth, setAuth] = useState()
 
   useEffect(() => {
     let database = firebase.firestore()
     setDb(database)
+    let auth = firebase.auth()
+    setAuth(auth)
   }, [])
+
+  // const actionCodeSettings = {
+  //   url: process.env.GATSBY_CONFIRMATION_EMAIL_REDIRECT,
+  //   handleCodeInApp: true,
+  // }
 
   const submitForm = e => {
     e.preventDefault()
-    if (termsAccepted) {
-      db.collection("users")
-        .add({
-          email: inputValues.email,
-          bundesland: inputValues.bundesland,
-        })
-        .then(({ id }) => {
-          console.log("Document written with ID: ", id)
+    const passwordsMatch = inputValues.password === inputValues.confirmPassword
+    if (termsAccepted && passwordsMatch) {
+      auth
+        .createUserWithEmailAndPassword(inputValues.email, inputValues.password)
+        .then(({ user }) => {
+          console.log("User successfully created: ", user)
+          // have to add a sign in component, no other option. Verification email
+          // can only be sent to a signed in user.
+          // Can automatically sign in user after user is created, but it's possible
+          // user will leave before finishing the email verification process.
+          // In this case, user needs to be able to sign in to complete the process.
+
+          setStep("second")
+          user.sendEmail
+          // add user to database
         })
         .catch(err => {
-          console.log("Error adding document", err)
+          setError(true)
+          if (err.code === "auth/email-already-in-use") {
+            setErrorMessage("already-registered")
+          } else {
+            setErrorMessage("general")
+          }
         })
-    } else {
+    } else if (!termsAccepted) {
       setError(true)
       setErrorMessage("terms-not-accepted")
+    } else if (!passwordsMatch) {
+      setError(true)
+      setErrorMessage("passwords-not-match")
     }
   }
 
@@ -58,6 +80,22 @@ export default function Register({ t }) {
                 id="email"
                 type="email"
                 placeholder={t("register.form.email-placeholder")}
+                onChange={handleChange}
+              />
+              <input
+                required
+                name="password"
+                id="password"
+                type="password"
+                placeholder={t("register.form.password-placeholder")}
+                onChange={handleChange}
+              />
+              <input
+                required
+                name="confirmPassword"
+                id="confirmPassword"
+                type="password"
+                placeholder={t("register.form.password-confirm-placeholder")}
                 onChange={handleChange}
               />
               <select
@@ -98,12 +136,12 @@ export default function Register({ t }) {
               />
               {t("register.form.accept-terms")}
             </label>
-            {termsAccepted && (
+            {/* {termsAccepted && (
               <ReCAPTCHA
                 sitekey="6LflAcMZAAAAAFaAhmhtDEegdLUb7g4S7wOqgWbp"
-                // onChange={verifyHuman}
+                onChange={verifyHuman}
               />
-            )}
+            )} */}
             <button className="submit-button">
               {t("register.form.submit")}
             </button>

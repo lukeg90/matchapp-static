@@ -7,6 +7,8 @@
     },
     "form": {
       "email-placeholder": "E-mail Address",
+      "password-placeholder": "Password",
+      "password-confirm-placeholder": "Confirm Password",
       "bundesland-select": "-- Federal Land --",
       "accept-terms": "I accept the data protection conditions for participating in the MatchApp pre-registration",
       "submit": "Get Extended Trial!"
@@ -17,7 +19,8 @@
       "already-registered": "E-mail already registered",
       "not-human": "Please confirm that you are not a robot",
       "terms-not-accepted": "Please accept the data protection conditions",
-      "general": "Oops! There was an error"
+      "general": "Oops! There was an error",
+      "passwords-not-match": "Passwords do not match. Please try again."
     }
   }
 }

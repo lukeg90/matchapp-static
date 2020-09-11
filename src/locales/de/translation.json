@@ -7,6 +7,8 @@
     },
     "form": {
       "email-placeholder": "E-mail Addresse",
+      "password-placeholder": "Passwort",
+      "password-confirm-placeholder": "Passwort Bestätigen",
       "bundesland-select": "-- Bundesland wählen --",
       "accept-terms": "Ich akzeptiere die Datenschutzbedingungen für die Teilnahme der MatchApp-Pre-Registration",
       "submit": "Extended Trial sichern!"
@@ -17,7 +19,8 @@
       "already-registered": "E-mail schon registriert",
       "not-human": "Bitte bestätigen Sie, dass Sie kein Roboter sind",
       "terms-not-accepted": "Bitte akzeptieren Sie die Datenschutzbedingungen",
-      "general": "Hoppla! Es ist ein Fehler aufgetreten"
+      "general": "Hoppla! Es ist ein Fehler aufgetreten",
+      "passwords-not-match": "Passwörter stimmen nicht überein. Bitte versuche es erneut.."
     }
   }
 }
