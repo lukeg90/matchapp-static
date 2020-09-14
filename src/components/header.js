@@ -19,8 +19,8 @@ const Header = ({ data, title }) => {
           onClick={() => changeLocale("de")}
         >
           DE
-        </button>{" "}
-        |{" "}
+        </button>
+        |
         <button
           className={`locale-button ${locale === "en" ? "active" : "inactive"}`}
           onClick={() => changeLocale("en")}

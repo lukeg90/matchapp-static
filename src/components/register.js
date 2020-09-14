@@ -40,7 +40,6 @@ export default function Register({ t }) {
           // In this case, user needs to be able to sign in to complete the process.
 
           setStep("second")
-          user.sendEmail
           // add user to database
         })
         .catch(err => {
@@ -82,22 +81,6 @@ export default function Register({ t }) {
                 placeholder={t("register.form.email-placeholder")}
                 onChange={handleChange}
               />
-              <input
-                required
-                name="password"
-                id="password"
-                type="password"
-                placeholder={t("register.form.password-placeholder")}
-                onChange={handleChange}
-              />
-              <input
-                required
-                name="confirmPassword"
-                id="confirmPassword"
-                type="password"
-                placeholder={t("register.form.password-confirm-placeholder")}
-                onChange={handleChange}
-              />
               <select
                 name="bundesland"
                 id="bundesland"
@@ -126,6 +109,22 @@ export default function Register({ t }) {
                 <option value="Schleswig-Holstein">Schleswig-Holstein</option>
                 <option value="Thüringen">Thüringen</option>
               </select>
+              <input
+                required
+                name="password"
+                id="password"
+                type="password"
+                placeholder={t("register.form.password-placeholder")}
+                onChange={handleChange}
+              />
+              <input
+                required
+                name="confirmPassword"
+                id="confirmPassword"
+                type="password"
+                placeholder={t("register.form.password-confirm-placeholder")}
+                onChange={handleChange}
+              />
             </div>
             <label htmlFor="termsAccepted" className="form-field">
               <input
