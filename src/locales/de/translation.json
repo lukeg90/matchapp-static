@@ -6,7 +6,7 @@
       "offer": "Registrierte dich vorab und nutze die MatchApp 4 statt 1 Monat kostenlos!"
     },
     "form": {
-      "email-placeholder": "E-mail Addresse",
+      "email-placeholder": "E-mail-Addresse",
       "password-placeholder": "Passwort",
       "password-confirm-placeholder": "Passwort Bestätigen",
       "bundesland-select": "-- Bundesland wählen --",
@@ -21,6 +21,34 @@
       "terms-not-accepted": "Bitte akzeptieren Sie die Datenschutzbedingungen",
       "general": "Hoppla! Es ist ein Fehler aufgetreten",
       "passwords-not-match": "Passwörter stimmen nicht überein. Bitte versuche es erneut.."
+    },
+    "toggle-login": {
+      "first": "Schon registriert? Klicken Sie",
+      "second": "hier",
+      "third": "um sich anzumelden"
     }
+  },
+  "login": {
+    "form": {
+      "email-placeholder": "E-mail-Addresse",
+      "password-placeholder": "Passwort",
+      "submit": "Anmelden"
+    },
+    "toggle-register": {
+      "first": "Noch nicht registriert? Klicken Sie",
+      "second": "hier",
+      "third": "um sich zu registrieren"
+    },
+    "error": {
+      "wrong-password": "Falsches Passwort. Bitte versuche es erneut."
+    }
+  },
+  "header": {
+    "logout": "Logout"
+  },
+  "footer": {
+    "terms-and-conditions": "Geschäftsbedingungen",
+    "faq": "Häufig Gestellte Fragen",
+    "privacy-policy": "Datenschutzbedingungen"
   }
 }

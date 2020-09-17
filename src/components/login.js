@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import { useStatefulFields } from "../hooks/useStatefulFields"
 
 export default function Login({ notRegistered, auth, db, t, step }) {
@@ -18,7 +18,7 @@ export default function Login({ notRegistered, auth, db, t, step }) {
         setError(true)
         console.log("Error logging in: ", err)
         if (err.code === "auth/wrong-password") {
-          setErrorMessage("Password is incorrect.")
+          setErrorMessage("wrong-password")
         }
       })
   }
@@ -37,7 +37,7 @@ export default function Login({ notRegistered, auth, db, t, step }) {
                 name="email"
                 id="email"
                 type="email"
-                placeholder={t("register.form.email-placeholder")}
+                placeholder={t("login.form.email-placeholder")}
                 onChange={handleChange}
               />
               <input
@@ -45,18 +45,18 @@ export default function Login({ notRegistered, auth, db, t, step }) {
                 name="password"
                 id="password"
                 type="password"
-                placeholder={t("register.form.password-placeholder")}
+                placeholder={t("login.form.password-placeholder")}
                 onChange={handleChange}
               />
             </div>
-            <button className="submit-button">Login</button>
+            <button className="submit-button">{t("login.form.submit")}</button>
           </form>
           <p>
-            Not yet registered? Click
+            {t("login.toggle-register.first")}
             <button className="link-button" onClick={notRegistered}>
-              here
+              {t("login.toggle-register.second")}
             </button>
-            to sign up
+            {t("login.toggle-register.third")}
           </p>
         </>
       )
@@ -80,7 +80,7 @@ export default function Login({ notRegistered, auth, db, t, step }) {
       </div>
       {error && (
         <div className="error">
-          {t(`register.error.${errorMessage}`) || t("register.error.general")}
+          {t(`login.error.${errorMessage}`) || t("register.error.general")}
         </div>
       )}
     </>

@@ -2,7 +2,7 @@ const functions = require("firebase-functions")
 const axios = require("axios")
 
 exports.sendRecaptcha = functions.https.onRequest(async (req, res) => {
-  res.set("Access-Control-Allow-Origin", functions.config().prod.url)
+  res.set("Access-Control-Allow-Origin", "*")
 
   const secret = functions.config().recaptcha.secret
   const token = req.query.token

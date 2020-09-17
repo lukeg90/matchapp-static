@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import PropTypes from "prop-types"
 import { useTranslation } from "react-i18next"
-import { Link } from "gatsby"
+import { Link, navigate } from "gatsby"
 import firebase from "gatsby-plugin-firebase"
 
 const Header = ({ data, title }) => {
@@ -32,6 +32,7 @@ const Header = ({ data, title }) => {
       .signOut()
       .then(() => {
         console.log("Log out successful")
+        navigate("/")
       })
       .catch(err => {
         console.log("Error logging out: ", err)
@@ -42,7 +43,7 @@ const Header = ({ data, title }) => {
     <header>
       {user && (
         <button className="logout link-button" onClick={() => logout()}>
-          Logout
+          {t("header.logout")}
         </button>
       )}
       <span className="language-select">

@@ -1,8 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
 
-import Layout from "../components/layout"
-
 const TermsAndConditions = ({ data }) => {
   const title = data.allMarkdownRemark.edges[0].node.frontmatter.title
   const body = data.allMarkdownRemark.edges[0].node.html

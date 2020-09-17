@@ -6,7 +6,6 @@ import axios from "axios"
 export default function Register({ t, alreadyRegistered, auth, db, step }) {
   const [inputValues, handleChange] = useStatefulFields()
   const [termsAccepted, setTermsAccepted] = useState(false)
-  const [humanVerified, setHumanVerified] = useState(false)
   const [error, setError] = useState(false)
   const [errorMessage, setErrorMessage] = useState("")
   // const [recaptchaToken, setRecaptchaToken] = useState("")
@@ -173,11 +172,11 @@ export default function Register({ t, alreadyRegistered, auth, db, step }) {
             </button>
           </form>
           <p>
-            Already registered? Click
+            {t("register.toggle-login.first")}
             <button className="link-button" onClick={alreadyRegistered}>
-              here
+              {t("register.toggle-login.second")}
             </button>
-            to Login
+            {t("register.toggle-login.third")}
           </p>
         </>
       )

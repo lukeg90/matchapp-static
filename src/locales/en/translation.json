@@ -21,6 +21,34 @@
       "terms-not-accepted": "Please accept the data protection conditions",
       "general": "Oops! There was an error",
       "passwords-not-match": "Passwords do not match. Please try again."
+    },
+    "toggle-login": {
+      "first": "Already registered? Click",
+      "second": "here",
+      "third": "to login"
     }
+  },
+  "login": {
+    "form": {
+      "email-placeholder": "E-mail Address",
+      "password-placeholder": "Password",
+      "submit": "Login"
+    },
+    "toggle-register": {
+      "first": "Not yet registered? Click",
+      "second": "here",
+      "third": "to sign up"
+    },
+    "error": {
+      "wrong-password": "Password incorrect. Please try again"
+    }
+  },
+  "header": {
+    "logout": "Logout"
+  },
+  "footer": {
+    "terms-and-conditions": "Terms and Conditions",
+    "faq": "Frequently Asked Questions",
+    "privacy-policy": "Privacy Policy"
   }
 }

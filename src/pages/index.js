@@ -1,9 +1,7 @@
 import React, { useState, useEffect, Suspense } from "react"
-import { Link } from "gatsby"
 import { useTranslation } from "react-i18next"
 import firebase from "gatsby-plugin-firebase"
 
-import SEO from "../components/seo"
 import Register from "../components/register"
 import Login from "../components/login"
 
@@ -45,7 +43,7 @@ const Index = () => {
         }
       })
     }
-  }, [auth])
+  }, [auth, db])
 
   const LazyCoverflow = () => {
     if (typeof window === "undefined") return <span>Loading...</span>
