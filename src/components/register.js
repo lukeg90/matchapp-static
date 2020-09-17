@@ -1,24 +1,17 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import { useStatefulFields } from "../hooks/useStatefulFields"
-import ReCAPTCHA from "react-google-recaptcha"
-import firebase from "gatsby-plugin-firebase"
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3"
+import axios from "axios"
 
-export default function Register({ t }) {
+export default function Register({ t, alreadyRegistered, auth, db, step }) {
   const [inputValues, handleChange] = useStatefulFields()
   const [termsAccepted, setTermsAccepted] = useState(false)
-  // const [humanVerified, setHumanVerified] = useState(false)
+  const [humanVerified, setHumanVerified] = useState(false)
   const [error, setError] = useState(false)
   const [errorMessage, setErrorMessage] = useState("")
-  const [step, setStep] = useState("first")
-  const [db, setDb] = useState()
-  const [auth, setAuth] = useState()
+  // const [recaptchaToken, setRecaptchaToken] = useState("")
 
-  useEffect(() => {
-    let database = firebase.firestore()
-    setDb(database)
-    let auth = firebase.auth()
-    setAuth(auth)
-  }, [])
+  const { executeRecaptcha } = useGoogleReCaptcha()
 
   // const actionCodeSettings = {
   //   url: process.env.GATSBY_CONFIRMATION_EMAIL_REDIRECT,
@@ -27,10 +20,32 @@ export default function Register({ t }) {
 
   const submitForm = e => {
     e.preventDefault()
+    setError(false)
+    if (!executeRecaptcha) {
+      console.log("Recaptcha was skipped")
+      return
+    }
     const passwordsMatch = inputValues.password === inputValues.confirmPassword
     if (termsAccepted && passwordsMatch) {
-      auth
-        .createUserWithEmailAndPassword(inputValues.email, inputValues.password)
+      executeRecaptcha("registration")
+        .then(token => {
+          console.log("Result of executing recaptcha: ", token)
+          // Need to call backend firebase function for recaptcha verification here
+          // will get apiString after deploying firebase function
+          const apiString =
+            "https://us-central1-matchapp-web.cloudfunctions.net/sendRecaptcha"
+          return axios.get(`${apiString}?token=${token}`)
+        })
+        .then(response => {
+          const score = response.data.score
+          console.log("Score: ", score)
+          if (score > 0.5) {
+            return auth.createUserWithEmailAndPassword(
+              inputValues.email,
+              inputValues.password
+            )
+          }
+        })
         .then(({ user }) => {
           console.log("User successfully created: ", user)
           // have to add a sign in component, no other option. Verification email
@@ -38,11 +53,22 @@ export default function Register({ t }) {
           // Can automatically sign in user after user is created, but it's possible
           // user will leave before finishing the email verification process.
           // In this case, user needs to be able to sign in to complete the process.
-
-          setStep("second")
-          // add user to database
+          return db.collection("users").doc(inputValues.email).set({
+            email: inputValues.email,
+            bundesland: inputValues.bundesland,
+            emailVerified: false,
+          })
         })
+        .then(() => {
+          console.log("User successfully written to database")
+          // setStep("second")
+          return auth.currentUser.sendEmailVerification({
+            url: process.env.GATSBY_SITE_URL,
+          })
+        })
+        .then(() => console.log("Verification email sent"))
         .catch(err => {
+          console.log("Submission error: ", err)
           setError(true)
           if (err.code === "auth/email-already-in-use") {
             setErrorMessage("already-registered")
@@ -69,7 +95,7 @@ export default function Register({ t }) {
             <br /> {t("register.hook.offer")}
           </h3>
           <form
-            className="flex-container form-container"
+            className="flex-container register-form-container"
             onSubmit={e => submitForm(e)}
           >
             <div className="form-fields">
@@ -141,34 +167,43 @@ export default function Register({ t }) {
                 onChange={verifyHuman}
               />
             )} */}
+            <div id="recaptcha"></div>
             <button className="submit-button">
               {t("register.form.submit")}
             </button>
           </form>
+          <p>
+            Already registered? Click
+            <button className="link-button" onClick={alreadyRegistered}>
+              here
+            </button>
+            to Login
+          </p>
         </>
       )
     } else if (step === "second") {
       return <h3>{t("register.link-sent")}</h3>
     } else if (step === "third") {
-      return <h1 className="subtitle">{t("register.success")}</h1>
+      return <h3>{t("register.success")}</h3>
     }
   }
 
   return (
-    <div
-      className={`${
-        step === "second" || step === "third"
-          ? "flex-container small-container"
-          : "flex-container main-container"
-      }`}
-    >
-      <h1 className="subtitle">{t("register.hook.title")}</h1>
-      <div>{getCurrentDisplay()}</div>
+    <>
+      <div
+        className={`${
+          step === "second" || step === "third"
+            ? "flex-container small-container"
+            : "flex-container register-container"
+        }`}
+      >
+        <div>{getCurrentDisplay()}</div>
+      </div>
       {error && (
         <div className="error">
           {t(`register.error.${errorMessage}`) || t("register.error.general")}
         </div>
       )}
-    </div>
+    </>
   )
 }

@@ -1,3 +1,8 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
 html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
@@ -17,6 +22,7 @@ body {
   -ms-font-feature-settings: "kern", "liga", "clig", "calt";
   -webkit-font-feature-settings: "kern", "liga", "clig", "calt";
   font-feature-settings: "kern", "liga", "clig", "calt";
+  margin-bottom: 150px;
 }
 article,
 aside,
@@ -581,9 +587,22 @@ pre tt:after {
   position: relative;
 }
 
-main {
-  padding-bottom: 100px;
+header {
+  background: white;
 }
+
+.logout {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  font-size: larger;
+}
+
+.faq-container {
+  width: 80%;
+  margin: 0 auto;
+}
+
 .faq-question {
   display: block;
   width: 100%;
@@ -631,6 +650,21 @@ main {
   width: 100vw;
 }
 
+.indent-text {
+  margin: 20px 100px 200px 100px;
+}
+
+.link-button {
+  background: none;
+  border: none;
+  color: rgb(0, 204, 204);
+  font-weight: bold;
+}
+
+.link-button:hover {
+  cursor: pointer;
+}
+
 .language-select {
   position: absolute;
   right: 20px;
@@ -662,6 +696,11 @@ main {
   margin-bottom: 0;
 }
 
+.hook {
+  text-align: center;
+  padding-top: 50px;
+}
+
 .flex-container {
   display: flex;
   flex-direction: column;
@@ -675,24 +714,53 @@ main {
   justify-content: center;
 }
 
-.main-container {
-  height: 650px;
+.register-container {
+  height: 550px;
 }
 
-footer {
-  position: absolute;
-  bottom: 0;
-  padding: 20px;
-  height: 100px;
-  width: 100%;
+.login-container {
+  height: 300px;
 }
 
 .small-container {
   height: 300px;
 }
 
-.form-container {
+.register-form-container {
   height: 350px;
+}
+
+.login-form-container {
+  height: 200px;
+}
+
+.header-nav-item {
+  text-decoration: none;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 150px;
+  width: 100%;
+  background: rgb(0, 204, 204);
+}
+
+.footer-nav-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-left: 100px;
+  justify-content: center;
+}
+
+.footer-nav-item {
+  padding: 5px;
+  text-decoration: none;
+  color: white;
+  font-weight: bolder;
 }
 
 p {
@@ -794,6 +862,7 @@ select:focus {
 
 .error {
   color: red;
+  text-align: center;
 }
 
 @media screen and (max-width: 500px) {
@@ -838,9 +907,9 @@ select:focus {
     height: 35px;
   }
 
-  .main-container {
+  .register-container {
     padding: 0 20px 0 20px;
-    height: 650px;
+    height: 500px;
   }
 
   .form-container {
