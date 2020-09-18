@@ -16,7 +16,7 @@ export default () => {
           node {
             base
             childImageSharp {
-              fluid(maxHeight: 700, maxWidth: 500, quality: 100) {
+              fluid {
                 ...GatsbyImageSharpFluid
               }
             }
