@@ -48,6 +48,12 @@ const Index = () => {
   }, [auth, db])
 
   const LazyCoverflow = () => {
+    if (typeof window === "undefined")
+      return (
+        <div className="coverflow-container">
+          <ClipLoader />
+        </div>
+      )
     const Component = React.lazy(() => import("../components/coverflow"))
     return (
       <div className="coverflow-container">
