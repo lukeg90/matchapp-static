@@ -43,6 +43,9 @@ export default function Register({ t, alreadyRegistered, auth, db, step }) {
               inputValues.email,
               inputValues.password
             )
+          } else {
+            setError(true)
+            setErrorMessage("Recaptcha failed. Try again if you're human.")
           }
         })
         .then(({ user }) => {

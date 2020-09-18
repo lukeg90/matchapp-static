@@ -9,7 +9,7 @@ const Faq = props => {
   const data = props.data.allFile.edges[0].node.childMarkdownRemark.frontmatter
   return (
     <div className="faq-container">
-      <h2 className="subtitle" style={{ marginLeft: "20px" }}>
+      <h2 className="subtitle" style={{ marginLeft: "10px" }}>
         {data.title}
       </h2>
       <br />

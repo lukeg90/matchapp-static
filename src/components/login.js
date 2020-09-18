@@ -84,7 +84,7 @@ export default function Login({
             </button>
             {t("login.toggle-register.third")}
           </p>
-          <button onClick={() => forgotPassword()}>
+          <button className="link-button" onClick={() => forgotPassword()}>
             Forgot your password?
           </button>
         </>
@@ -107,7 +107,9 @@ export default function Login({
             placeholder={t("login.form.email-placeholder")}
             onChange={handleChange}
           />
-          <button onClick={() => passwordReset()}>Send</button>
+          <button className="submit-button" onClick={() => passwordReset()}>
+            Send
+          </button>
         </form>
       )
     }
