@@ -20,7 +20,8 @@
       "not-human": "Please confirm that you are not a robot",
       "terms-not-accepted": "Please accept the data protection conditions",
       "general": "Oops! There was an error",
-      "passwords-not-match": "Passwords do not match. Please try again."
+      "passwords-not-match": "Passwords do not match. Please try again",
+      "weak-password": "Please choose a password with at least 6 characters"
     },
     "toggle-login": {
       "first": "Already registered? Click",
@@ -39,8 +40,15 @@
       "second": "here",
       "third": "to sign up"
     },
+    "reset": {
+      "forgot-password": "Forgot your password?",
+      "reset-password": "Enter your email address and we'll send you a link to reset your password",
+      "send": "Send",
+      "sent": "Email sent! Please check your inbox"
+    },
     "error": {
-      "wrong-password": "Password incorrect. Please try again"
+      "user-not-found": "Unable to login. Please double check your username and password",
+      "general": "Oops! There was an error"
     }
   },
   "header": {

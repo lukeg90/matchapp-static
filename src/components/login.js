@@ -12,6 +12,7 @@ export default function Login({
   const [inputValues, handleChange] = useStatefulFields()
   const [error, setError] = useState(false)
   const [errorMessage, setErrorMessage] = useState("")
+  const [resetEmailSent, setResetEmailSent] = useState(false)
 
   const submitLogin = e => {
     setError(false)
@@ -24,18 +25,25 @@ export default function Login({
       .catch(err => {
         setError(true)
         console.log("Error logging in: ", err)
-        if (err.code === "auth/wrong-password") {
-          setErrorMessage("wrong-password")
+        if (
+          err.code === "auth/wrong-password" ||
+          err.code === "auth/user-not-found"
+        ) {
+          setErrorMessage("user-not-found")
           // show password reset button
         }
       })
   }
 
-  const passwordReset = () => {
+  const passwordReset = e => {
     setError(false)
+    e.preventDefault()
     auth
       .sendPasswordResetEmail(inputValues.passwordReset)
-      .then(() => console.log("Password reset email sent"))
+      .then(() => {
+        console.log("Password reset email sent")
+        setResetEmailSent(true)
+      })
       .catch(err => {
         setError(true)
         console.log("Error sending password reset email: ", err)
@@ -85,7 +93,7 @@ export default function Login({
             {t("login.toggle-register.third")}
           </p>
           <button className="link-button" onClick={() => forgotPassword()}>
-            Forgot your password?
+            {t("login.reset.forgot-password")}
           </button>
         </>
       )
@@ -95,22 +103,29 @@ export default function Login({
       return <h3>{t("register.success")}</h3>
     } else if (step === "forgot-password") {
       return (
-        <form className="flex-container login-form-container">
-          <p>
-            Enter your email address and we'll send you a link to reset your
-            password
-          </p>
-          <input
-            type="email"
-            name="passwordReset"
-            id="passwordReset"
-            placeholder={t("login.form.email-placeholder")}
-            onChange={handleChange}
-          />
-          <button className="submit-button" onClick={() => passwordReset()}>
-            Send
-          </button>
-        </form>
+        <>
+          {resetEmailSent ? (
+            <h4>{t("login.reset.sent")}</h4>
+          ) : (
+            <form
+              className="flex-container login-form-container"
+              onSubmit={e => passwordReset(e)}
+            >
+              <p>{t("login.reset.reset-password")}</p>
+              <div className="form-fields">
+                <input
+                  required
+                  type="email"
+                  name="passwordReset"
+                  id="passwordReset"
+                  placeholder={t("login.form.email-placeholder")}
+                  onChange={handleChange}
+                />
+              </div>
+              <button className="submit-button">{t("login.reset.send")}</button>
+            </form>
+          )}
+        </>
       )
     }
   }

@@ -74,6 +74,8 @@ export default function Register({ t, alreadyRegistered, auth, db, step }) {
           setError(true)
           if (err.code === "auth/email-already-in-use") {
             setErrorMessage("already-registered")
+          } else if (err.code === "auth/weak-password") {
+            setErrorMessage("weak-password")
           } else {
             setErrorMessage("general")
           }
@@ -163,12 +165,6 @@ export default function Register({ t, alreadyRegistered, auth, db, step }) {
               />
               {t("register.form.accept-terms")}
             </label>
-            {/* {termsAccepted && (
-              <ReCAPTCHA
-                sitekey="6LflAcMZAAAAAFaAhmhtDEegdLUb7g4S7wOqgWbp"
-                onChange={verifyHuman}
-              />
-            )} */}
             <div id="recaptcha"></div>
             <button className="submit-button">
               {t("register.form.submit")}

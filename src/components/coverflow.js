@@ -34,9 +34,14 @@ export default () => {
         clickable={false}
         active={0}
         infiniteScroll={true}
+        currentFigureScale={1.2}
+        otherFigureScale={0.9}
         media={{
           "@media (max-width: 900px)": {
             height: "auto",
+          },
+          "@media (min-width: 1500px)": {
+            height: "400px",
           },
         }}
       >

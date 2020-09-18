@@ -22,7 +22,7 @@ body {
   -ms-font-feature-settings: "kern", "liga", "clig", "calt";
   -webkit-font-feature-settings: "kern", "liga", "clig", "calt";
   font-feature-settings: "kern", "liga", "clig", "calt";
-  margin-bottom: 150px;
+  margin-bottom: 200px;
 }
 article,
 aside,
@@ -732,6 +732,7 @@ header {
 
 .register-form-container {
   height: 350px;
+  margin: 10px 0 10px 0;
 }
 
 .login-form-container {
@@ -818,6 +819,7 @@ select {
   width: 300px;
   height: 40px;
   margin-bottom: 10px;
+  background: white;
 }
 
 select:required:invalid {
@@ -868,11 +870,12 @@ select:focus {
 .error {
   color: red;
   text-align: center;
+  margin-top: 10px;
 }
 
 @media screen and (max-width: 500px) {
-  .App {
-    font-size: smaller;
+  body {
+    margin-bottom: 150px;
   }
 
   .title {
@@ -889,7 +892,7 @@ select:focus {
   }
 
   .form-fields {
-    width: 80%;
+    width: 100%;
   }
 
   input[type="email"] {
@@ -908,13 +911,17 @@ select:focus {
   }
 
   .submit-button {
-    width: 80%;
+    width: 100%;
     height: 35px;
   }
 
   .register-container {
-    padding: 0 20px 0 20px;
+    padding: 20px 20px 0 20px;
     height: 500px;
+  }
+
+  .login-container {
+    padding: 0 20px 0 20px;
   }
 
   .form-container {
@@ -927,9 +934,28 @@ select:focus {
   }
 
   .language-select {
-    position: absolute;
     right: 10px;
     top: 10px;
+  }
+
+  .logout {
+    right: 10px;
+    top: 10px;
+  }
+
+  footer {
+    height: 100px;
+  }
+
+  .footer-nav-container {
+    margin-left: 20px;
+  }
+
+  .footer-nav-item {
+    font-size: 0.8rem;
+  }
+  .error {
+    padding: 0 20px 0 20px;
   }
 }
 

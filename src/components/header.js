@@ -31,8 +31,10 @@ const Header = ({ data, title }) => {
     auth
       .signOut()
       .then(() => {
+        // state does not reset unless window is reloaded
+        window.location.reload()
         console.log("Log out successful")
-        navigate("/")
+        // navigate("/")
       })
       .catch(err => {
         console.log("Error logging out: ", err)

@@ -20,7 +20,8 @@
       "not-human": "Bitte bestätigen Sie, dass Sie kein Roboter sind",
       "terms-not-accepted": "Bitte akzeptieren Sie die Datenschutzbedingungen",
       "general": "Hoppla! Es ist ein Fehler aufgetreten",
-      "passwords-not-match": "Passwörter stimmen nicht überein. Bitte versuche es erneut.."
+      "passwords-not-match": "Passwörter stimmen nicht überein. Bitte versuche es erneut",
+      "weak-password": "Bitte wählen Sie ein Passwort mit mindestens 6 Zeichen"
     },
     "toggle-login": {
       "first": "Schon registriert? Klicken Sie",
@@ -39,8 +40,15 @@
       "second": "hier",
       "third": "um sich zu registrieren"
     },
+    "reset": {
+      "forgot-password": "Passwort vergessen?",
+      "reset-password": "Geben Sie einfach Ihre E-Mail-Adresse ein und wir senden Ihnen einen Link Ihr Passwort zurücksetzen",
+      "send": "Senden",
+      "sent": "E-Mail gesendet! Bitte überprüfen Sie Ihren Posteingang"
+    },
     "error": {
-      "wrong-password": "Falsches Passwort. Bitte versuche es erneut."
+      "user-not-found": "Fehler bei der Anmeldung. Bitte überprüfen Sie Ihren Benutzernamen und Passwort",
+      "general": "Hoppla! Es ist ein Fehler aufgetreten"
     }
   },
   "header": {
