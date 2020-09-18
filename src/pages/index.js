@@ -1,7 +1,7 @@
 import React, { useState, useEffect, Suspense } from "react"
 import { useTranslation } from "react-i18next"
 import firebase from "gatsby-plugin-firebase"
-import Coverflow from "../components/coverflow"
+import ClipLoader from "react-spinners/ClipLoader"
 
 import Register from "../components/register"
 import Login from "../components/login"
@@ -11,10 +11,8 @@ const Index = () => {
   const [db, setDb] = useState()
   const [auth, setAuth] = useState()
   const [step, setStep] = useState("")
-  const [loaded, setLoaded] = useState(false)
 
   useEffect(() => {
-    setLoaded(true)
     let database = firebase.firestore()
     setDb(database)
     let auth = firebase.auth()
@@ -49,24 +47,23 @@ const Index = () => {
     }
   }, [auth, db])
 
-  // const LazyCoverflow = () => {
-  //   if (typeof window === "undefined") return <span>Loading...</span>
-  //   const Component = React.lazy(() => import("../components/coverflow"))
-  //   return (
-  //     <>
-  //       <Suspense fallback={<span>Loading...</span>}>
-  //         <Component />
-  //       </Suspense>
-  //     </>
-  //   )
-  // }
+  const LazyCoverflow = () => {
+    const Component = React.lazy(() => import("../components/coverflow"))
+    return (
+      <div className="coverflow-container">
+        <Suspense fallback={<ClipLoader />}>
+          <Component />
+        </Suspense>
+      </div>
+    )
+  }
 
   const { t } = useTranslation()
 
   return (
     // <SEO title="Home" />
     <div className="App">
-      {loaded && <Coverflow />}
+      <LazyCoverflow />
       <h1 className="subtitle hook">{t("register.hook.title")}</h1>
       {alreadyRegistered ? (
         <Login

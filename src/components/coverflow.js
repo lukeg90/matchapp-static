@@ -41,7 +41,11 @@ export default () => {
       }}
     >
       {data.allFile.edges.map(image => (
-        <Img fluid={image.node.childImageSharp.fluid} alt="" />
+        <Img
+          fluid={image.node.childImageSharp.fluid}
+          alt=""
+          key={image.node.childImageSharp.fluid}
+        />
       ))}
     </Coverflow>
   )
