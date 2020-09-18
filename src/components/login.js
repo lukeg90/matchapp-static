@@ -38,8 +38,12 @@ export default function Login({
   const passwordReset = e => {
     setError(false)
     e.preventDefault()
+    const actionCodeSettings = {
+      url: process.env.GATSBY_SITE_URL,
+      handleCodeInApp: false,
+    }
     auth
-      .sendPasswordResetEmail(inputValues.passwordReset)
+      .sendPasswordResetEmail(inputValues.passwordReset, actionCodeSettings)
       .then(() => {
         console.log("Password reset email sent")
         setResetEmailSent(true)

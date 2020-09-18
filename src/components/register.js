@@ -181,6 +181,7 @@ export default function Register({ t, alreadyRegistered, auth, db, step }) {
       )
     } else if (step === "second") {
       return <h3>{t("register.link-sent")}</h3>
+      // TODO: add button to resend link
     } else if (step === "third") {
       return <h3>{t("register.success")}</h3>
     }
