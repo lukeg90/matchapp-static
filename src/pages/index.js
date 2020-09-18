@@ -11,6 +11,7 @@ const Index = () => {
   const [db, setDb] = useState()
   const [auth, setAuth] = useState()
   const [step, setStep] = useState("")
+  const [loaded, setLoaded] = useState(false)
 
   useEffect(() => {
     let database = firebase.firestore()
@@ -21,6 +22,7 @@ const Index = () => {
   }, [])
 
   useEffect(() => {
+    setLoaded(true)
     if (auth) {
       auth.onAuthStateChanged(user => {
         if (user) {
@@ -64,7 +66,7 @@ const Index = () => {
   return (
     // <SEO title="Home" />
     <div className="App">
-      <Coverflow />
+      {loaded && <Coverflow />}
       <h1 className="subtitle hook">{t("register.hook.title")}</h1>
       {alreadyRegistered ? (
         <Login
