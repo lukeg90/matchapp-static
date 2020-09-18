@@ -26,23 +26,25 @@ export default () => {
     }
   `)
   return (
-    <Coverflow
-      height="400"
-      displayQuantityOfSide={3}
-      navigation={false}
-      enableScroll={false}
-      clickable={false}
-      active={0}
-      infiniteScroll={true}
-      media={{
-        "@media (max-width: 900px)": {
-          height: "10em",
-        },
-      }}
-    >
-      {data.allFile.edges.map(image => (
-        <Img fluid={image.node.childImageSharp.fluid} alt="" />
-      ))}
-    </Coverflow>
+    typeof window !== "undefined" && (
+      <Coverflow
+        height="400"
+        displayQuantityOfSide={3}
+        navigation={false}
+        enableScroll={false}
+        clickable={false}
+        active={0}
+        infiniteScroll={true}
+        media={{
+          "@media (max-width: 900px)": {
+            height: "10em",
+          },
+        }}
+      >
+        {data.allFile.edges.map(image => (
+          <Img fluid={image.node.childImageSharp.fluid} alt="" />
+        ))}
+      </Coverflow>
+    )
   )
 }
