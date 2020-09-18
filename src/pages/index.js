@@ -1,6 +1,7 @@
 import React, { useState, useEffect, Suspense } from "react"
 import { useTranslation } from "react-i18next"
 import firebase from "gatsby-plugin-firebase"
+import Coverflow from "../components/coverflow"
 
 import Register from "../components/register"
 import Login from "../components/login"
@@ -46,24 +47,24 @@ const Index = () => {
     }
   }, [auth, db])
 
-  const LazyCoverflow = () => {
-    if (typeof window === "undefined") return <span>Loading...</span>
-    const Component = React.lazy(() => import("../components/coverflow"))
-    return (
-      <>
-        <Suspense fallback={<span>Loading...</span>}>
-          <Component />
-        </Suspense>
-      </>
-    )
-  }
+  // const LazyCoverflow = () => {
+  //   if (typeof window === "undefined") return <span>Loading...</span>
+  //   const Component = React.lazy(() => import("../components/coverflow"))
+  //   return (
+  //     <>
+  //       <Suspense fallback={<span>Loading...</span>}>
+  //         <Component />
+  //       </Suspense>
+  //     </>
+  //   )
+  // }
 
   const { t } = useTranslation()
 
   return (
     // <SEO title="Home" />
     <div className="App">
-      <LazyCoverflow />
+      <Coverflow />
       <h1 className="subtitle hook">{t("register.hook.title")}</h1>
       {alreadyRegistered ? (
         <Login
