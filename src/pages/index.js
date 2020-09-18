@@ -14,6 +14,7 @@ const Index = () => {
   const [loaded, setLoaded] = useState(false)
 
   useEffect(() => {
+    setLoaded(true)
     let database = firebase.firestore()
     setDb(database)
     let auth = firebase.auth()
@@ -22,7 +23,6 @@ const Index = () => {
   }, [])
 
   useEffect(() => {
-    setLoaded(true)
     if (auth) {
       auth.onAuthStateChanged(user => {
         if (user) {
