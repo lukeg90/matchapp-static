@@ -110,7 +110,7 @@ export default function Register({ t, alreadyRegistered, auth, db, step }) {
                 name="bundesland"
                 id="bundesland"
                 required
-                onChange={handleChange}
+                onBlur={handleChange}
               >
                 <option className="placeholder" value="">
                   {t("register.form.bundesland-select")}

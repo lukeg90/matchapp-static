@@ -15,6 +15,7 @@ const Index = () => {
     let database = firebase.firestore()
     setDb(database)
     let auth = firebase.auth()
+    auth.useDeviceLanguage()
     setAuth(auth)
   }, [])
 
@@ -70,6 +71,7 @@ const Index = () => {
           auth={auth}
           db={db}
           step={step}
+          forgotPassword={() => setStep("forgot-password")}
           notRegistered={() => setAlreadyRegistered(false)}
         />
       ) : (
