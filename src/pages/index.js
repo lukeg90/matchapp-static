@@ -57,7 +57,13 @@ const Index = () => {
     const Component = React.lazy(() => import("../components/coverflow"))
     return (
       <div>
-        <Suspense fallback={<ClipLoader />}>
+        <Suspense
+          fallback={
+            <div className="coverflow-container">
+              <ClipLoader />
+            </div>
+          }
+        >
           <Component />
         </Suspense>
       </div>
