@@ -64,7 +64,7 @@ const Index = () => {
   return (
     // <SEO title="Home" />
     <div className="App">
-      <Coverflow />
+      {typeof window !== "undefined" && <Coverflow />}
       <h1 className="subtitle hook">{t("register.hook.title")}</h1>
       {alreadyRegistered ? (
         <Login
