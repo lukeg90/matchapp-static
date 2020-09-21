@@ -14,7 +14,10 @@
       "submit": "Extended Trial sichern!"
     },
     "link-sent": "Um Ihre Registrierung zu überprüfen, klicken Sie bitte auf den Link, den Sie per E-Mail erhalten haben",
-    "success": "Registrierung erfolgreich!",
+    "link-expired": "Keine E-Mail erhalten? Link abgelaufen?",
+    "resend-link": "Erneut senden",
+    "link-resent": "E-mail erneut gesendet",
+    "success": "Vorabregistrierung erfolgreich!",
     "error": {
       "already-registered": "E-mail schon registriert",
       "not-human": "Bitte bestätigen Sie, dass Sie kein Roboter sind",

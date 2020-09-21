@@ -3,7 +3,17 @@ import { useStatefulFields } from "../hooks/useStatefulFields"
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3"
 import axios from "axios"
 
-export default function Register({ t, alreadyRegistered, auth, db, step }) {
+import AwaitingVerification from "./awaiting-verification"
+import Profile from "./profile"
+
+export default function Register({
+  t,
+  alreadyRegistered,
+  auth,
+  db,
+  step,
+  verifyEmail,
+}) {
   const [inputValues, handleChange] = useStatefulFields()
   const [termsAccepted, setTermsAccepted] = useState(false)
   const [error, setError] = useState(false)
@@ -64,11 +74,8 @@ export default function Register({ t, alreadyRegistered, auth, db, step }) {
         .then(() => {
           console.log("User successfully written to database")
           // setStep("second")
-          return auth.currentUser.sendEmailVerification({
-            url: process.env.GATSBY_SITE_URL,
-          })
+          return verifyEmail()
         })
-        .then(() => console.log("Verification email sent"))
         .catch(err => {
           console.log("Submission error: ", err)
           setError(true)
@@ -180,10 +187,9 @@ export default function Register({ t, alreadyRegistered, auth, db, step }) {
         </>
       )
     } else if (step === "second") {
-      return <h3>{t("register.link-sent")}</h3>
-      // TODO: add button to resend link
+      return <AwaitingVerification t={t} verifyEmail={verifyEmail} />
     } else if (step === "third") {
-      return <h3>{t("register.success")}</h3>
+      return <Profile db={db} auth={auth} t={t} />
     }
   }
 

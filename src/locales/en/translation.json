@@ -14,7 +14,10 @@
       "submit": "Get Extended Trial!"
     },
     "link-sent": "To verify your registration, please click on the link that you have received by email",
-    "success": "Registration successful!",
+    "link-expired": "Didn't receive email? Link expired?",
+    "resend-link": "Resend",
+    "link-resent": "Email resent",
+    "success": "Pre-registration successful!",
     "error": {
       "already-registered": "E-mail already registered",
       "not-human": "Please confirm that you are not a robot",

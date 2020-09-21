@@ -1,6 +1,9 @@
 import React, { useState } from "react"
 import { useStatefulFields } from "../hooks/useStatefulFields"
 
+import AwaitingVerification from "./awaiting-verification"
+import Profile from "./profile"
+
 export default function Login({
   notRegistered,
   auth,
@@ -8,6 +11,7 @@ export default function Login({
   t,
   step,
   forgotPassword,
+  verifyEmail,
 }) {
   const [inputValues, handleChange] = useStatefulFields()
   const [error, setError] = useState(false)
@@ -30,7 +34,6 @@ export default function Login({
           err.code === "auth/user-not-found"
         ) {
           setErrorMessage("user-not-found")
-          // show password reset button
         }
       })
   }
@@ -102,15 +105,16 @@ export default function Login({
         </>
       )
     } else if (step === "second") {
-      return <h3>{t("register.link-sent")}</h3>
+      return <AwaitingVerification t={t} verifyEmail={verifyEmail} />
     } else if (step === "third") {
-      return <h3>{t("register.success")}</h3>
+      return <Profile auth={auth} db={db} t={t} />
     } else if (step === "forgot-password") {
       return (
         <>
           {resetEmailSent ? (
             <h4>{t("login.reset.sent")}</h4>
           ) : (
+            // TODO: add button to resend
             <form
               className="flex-container login-form-container"
               onSubmit={e => passwordReset(e)}

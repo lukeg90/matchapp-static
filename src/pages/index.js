@@ -70,6 +70,19 @@ const Index = () => {
     )
   }
 
+  const verifyEmail = () => {
+    auth.currentUser
+      .sendEmailVerification({
+        url: process.env.GATSBY_SITE_URL,
+      })
+      .then(() => {
+        console.log("Verification email sent")
+      })
+      .catch(err => {
+        console.log("Error sending verification email: ", err)
+      })
+  }
+
   const { t } = useTranslation()
 
   return (
@@ -85,6 +98,7 @@ const Index = () => {
           step={step}
           forgotPassword={() => setStep("forgot-password")}
           notRegistered={() => setAlreadyRegistered(false)}
+          verifyEmail={() => verifyEmail()}
         />
       ) : (
         <Register
@@ -93,6 +107,7 @@ const Index = () => {
           db={db}
           step={step}
           alreadyRegistered={() => setAlreadyRegistered(true)}
+          verifyEmail={() => verifyEmail()}
         />
       )}
     </div>
