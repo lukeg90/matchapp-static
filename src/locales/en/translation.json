@@ -51,7 +51,16 @@
     },
     "error": {
       "user-not-found": "Unable to login. Please double check your username and password",
+      "user-not-exist": "This email address is not linked to any registered user",
       "general": "Oops! There was an error"
+    }
+  },
+  "profile": {
+    "delete": {
+      "button": "Delete account",
+      "lose-everything": "and opt out of pre-registration benefits",
+      "are-you-sure": "Are you sure you want to delete your account? You will lose access to all pre-registration benefits",
+      "confirm-password": "Please confirm your password to continue"
     }
   },
   "header": {

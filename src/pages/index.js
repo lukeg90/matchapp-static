@@ -1,17 +1,20 @@
-import React, { useState, useEffect, Suspense } from "react"
+import React, { useState, useEffect } from "react"
 import { useTranslation } from "react-i18next"
 import firebase from "gatsby-plugin-firebase"
-import ClipLoader from "react-spinners/ClipLoader"
 
 import Register from "../components/register"
 import Login from "../components/login"
+import LazyCoverflow from "../components/lazy-coverflow"
 
-const Index = () => {
+export default function Index() {
   const [alreadyRegistered, setAlreadyRegistered] = useState(false)
   const [db, setDb] = useState()
   const [auth, setAuth] = useState()
   const [step, setStep] = useState("")
 
+  const { t } = useTranslation()
+
+  // Initialize firebase auth and database
   useEffect(() => {
     let database = firebase.firestore()
     setDb(database)
@@ -20,6 +23,9 @@ const Index = () => {
     setAuth(auth)
   }, [])
 
+  // Watch for changes in auth. If user not logged in, render login/registration form.
+  // If user is logged in but email not verified, render second option. If user logged in and
+  // email verified, render third option (profile)
   useEffect(() => {
     if (auth) {
       auth.onAuthStateChanged(user => {
@@ -47,29 +53,6 @@ const Index = () => {
     }
   }, [auth, db])
 
-  const LazyCoverflow = () => {
-    if (typeof window === "undefined")
-      return (
-        <div className="coverflow-container">
-          <ClipLoader />
-        </div>
-      )
-    const Component = React.lazy(() => import("../components/coverflow"))
-    return (
-      <div>
-        <Suspense
-          fallback={
-            <div className="coverflow-container">
-              <ClipLoader />
-            </div>
-          }
-        >
-          <Component />
-        </Suspense>
-      </div>
-    )
-  }
-
   const verifyEmail = () => {
     auth.currentUser
       .sendEmailVerification({
@@ -82,8 +65,6 @@ const Index = () => {
         console.log("Error sending verification email: ", err)
       })
   }
-
-  const { t } = useTranslation()
 
   return (
     // <SEO title="Home" />
@@ -113,5 +94,3 @@ const Index = () => {
     </div>
   )
 }
-
-export default Index

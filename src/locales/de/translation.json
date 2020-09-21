@@ -51,7 +51,16 @@
     },
     "error": {
       "user-not-found": "Fehler bei der Anmeldung. Bitte überprüfen Sie Ihren Benutzernamen und Passwort",
+      "user-not-exist": "Diese E-Mail-Adresse wird von keinem registrierten Benutzer verwendet.",
       "general": "Hoppla! Es ist ein Fehler aufgetreten"
+    }
+  },
+  "profile": {
+    "delete": {
+      "button": "Account löschen",
+      "lose-everything": "und Vorregistrierungsvorteile abbestellen",
+      "are-you-sure": "Möchten Sie Ihren Account wirklich löschen? Sie verlieren den Zugriff auf alle Vorteile der Vorregistrierung",
+      "confirm-password": "Bitte bestätigen Sie Ihr Passwort, um fortzufahren"
     }
   },
   "header": {

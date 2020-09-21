@@ -55,9 +55,7 @@ export default function Login({
         setError(true)
         console.log("Error sending password reset email: ", err)
         if (err.code === "auth/user-not-found") {
-          setErrorMessage(
-            "This email address is not linked to any registered user"
-          )
+          setErrorMessage("user-not-exist")
         } else {
           setErrorMessage("general")
         }
@@ -129,8 +127,10 @@ export default function Login({
                   placeholder={t("login.form.email-placeholder")}
                   onChange={handleChange}
                 />
+                <button className="submit-button">
+                  {t("login.reset.send")}
+                </button>
               </div>
-              <button className="submit-button">{t("login.reset.send")}</button>
             </form>
           )}
         </>
