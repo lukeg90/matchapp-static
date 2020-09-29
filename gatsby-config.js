@@ -4,7 +4,7 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    title: `MatchApp`,
+    title: `OneDollarXClub`,
     description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
     author: `@gatsbyjs`,
   },
@@ -33,7 +33,7 @@ module.exports = {
         fonts: [
           {
             family: "Josefin Sans",
-            weights: ["400", "700"],
+            weights: ["300", "400", "600", "700"],
           },
         ],
       },
