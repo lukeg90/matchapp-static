@@ -67,7 +67,6 @@ const Header = ({ data, title }) => {
         <Link to="/" className="header-nav-item">
           <h1 className="title">{title}</h1>
         </Link>
-        <h2 className="subtitle">Swipe them into your bed!</h2>
       </div>
     </header>
   )

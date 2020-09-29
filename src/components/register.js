@@ -162,6 +162,25 @@ export default function Register({
                 placeholder={t("register.form.password-confirm-placeholder")}
                 onChange={handleChange}
               />
+              <p className="recaptcha-branding">
+                This site is protected by reCAPTCHA and the Google{" "}
+                <a
+                  href="https://policies.google.com/privacy"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Privacy Policy
+                </a>{" "}
+                and{" "}
+                <a
+                  href="https://policies.google.com/terms"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Terms of Service
+                </a>{" "}
+                apply.
+              </p>
             </div>
             <label htmlFor="termsAccepted" className="form-field">
               <input
@@ -172,7 +191,6 @@ export default function Register({
               />
               {t("register.form.accept-terms")}
             </label>
-            <div id="recaptcha"></div>
             <button className="submit-button">
               {t("register.form.submit")}
             </button>

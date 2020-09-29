@@ -28,9 +28,14 @@ module.exports = {
     `gatsby-transformer-remark`,
     `gatsby-plugin-sharp`,
     {
-      resolve: `gatsby-plugin-google-fonts`,
+      resolve: `gatsby-plugin-google-fonts-v2`,
       options: {
-        fonts: ["Josefin Sans"],
+        fonts: [
+          {
+            family: "Josefin Sans",
+            weights: ["400", "700"],
+          },
+        ],
       },
     },
     {

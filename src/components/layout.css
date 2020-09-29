@@ -646,7 +646,6 @@ header {
 }
 
 .App {
-  font-family: "Josefin Sans";
   width: 100vw;
 }
 
@@ -655,7 +654,7 @@ header {
 }
 
 .indent-text {
-  margin: 20px 100px 200px 100px;
+  padding: 20px 100px 200px 100px;
 }
 
 .link-button {
@@ -690,7 +689,8 @@ header {
   color: rgba(0, 204, 204);
   font-size: 50px;
   margin-bottom: 10px;
-  font-family: "Josefin Sans Bold";
+  font-family: "Josefin Sans";
+  font-weight: 900;
   letter-spacing: 0.1em;
 }
 
@@ -714,8 +714,9 @@ header {
 }
 
 .title-container {
-  height: 150px;
-  justify-content: center;
+  height: 100px;
+  justify-content: flex-end;
+  margin-bottom: 10px;
 }
 
 .register-container {
@@ -811,6 +812,20 @@ input[type="checkbox"]:hover {
   cursor: pointer;
 }
 
+.recaptcha-branding {
+  width: 300px;
+  font-size: 12px;
+  text-align: left;
+  margin: 0;
+  line-height: 14px;
+  color: gray;
+}
+
+.recaptcha-branding a {
+  text-decoration: none;
+  color: rgb(0, 204, 204);
+}
+
 select {
   border: solid rgb(0, 204, 204);
   border-radius: 10px;
@@ -873,7 +888,15 @@ select:focus {
   margin-top: 10px;
 }
 
+.grecaptcha-badge {
+  visibility: hidden;
+}
+
 @media screen and (max-width: 500px) {
+  html {
+    font-size: 100%;
+  }
+
   body {
     margin-bottom: 150px;
   }
@@ -933,6 +956,10 @@ select:focus {
     padding: 0 20px 0 20px;
   }
 
+  .indent-text {
+    padding: 0 20px 0 20px;
+  }
+
   .language-select {
     right: 10px;
     top: 10px;
@@ -956,11 +983,5 @@ select:focus {
   }
   .error {
     padding: 0 20px 0 20px;
-  }
-}
-
-@media only screen and (max-width: 480px) {
-  html {
-    font-size: 100%;
   }
 }
