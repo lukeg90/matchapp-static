@@ -29,4 +29,9 @@ collections:
         file: content/terms-and-conditions.md
         fields:
           - { label: Title, name: title, widget: string }
-          - { label: Body, name: body, widget: markdown }
+          - name: conditions
+            label: "Conditions"
+            widget: list
+            fields:
+              - { label: Condition Title, name: subtitle, widget: string }
+              - { label: condition, name: condition, widget: markdown }
